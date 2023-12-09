@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import MainPage from "./Components/MainPage";
 import ProductPage from "./Components/ProductPage";
+import ErrorPage from "./Components/ErrorPage";
 
 
 
@@ -18,6 +19,7 @@ const BrowserRouter = createBrowserRouter([
         {
           path: "/product",
           element: <ProductPage />  ,
+          errorElement: <ErrorPage />,
         },
       ],
     },
