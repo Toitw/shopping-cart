@@ -1,23 +1,48 @@
-import React from 'react';
+import { getProducts } from '../Api/storeItems';
+import { useEffect, useState } from 'react';
 
 const ShopPage = () => {
-  const products = [
-    { id: 1, name: 'Product 1', price: 10 },
-    { id: 2, name: 'Product 2', price: 20 },
-    { id: 3, name: 'Product 3', price: 30 },
-    // Add more products here
-  ];
 
-  return (
-    <div className="product-grid">
-      {products.map((product) => (
-        <div key={product.id} className="product-item">
-          <h3>{product.name}</h3>
-          <p>Price: ${product.price}</p>
+    const [products, setProducts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        getProducts()
+        .then((products) => {
+            setProducts(products);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            setError(error);
+            setIsLoading(false);
+        })
+        .finally(() => {
+            setIsLoading(false);
+        });
+    }, []); 
+
+    if (isLoading) {
+        return <div>Loading...</div>; 
+    }
+
+    if (error) {
+        return <div>Error: {error.message}</div>; 
+    }
+
+    return (
+        <div className="product-grid">
+            {products.map((product) => (
+                <div className="product-card" key={product.id}>
+                    <img src={product.image} alt={product.title} />
+                    <h3>{product.title}</h3>
+                    <p>{product.description}</p>
+                    <p>{product.price}</p>
+                    <button>Add to Cart</button>
+                </div>
+            ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
 export default ShopPage;
