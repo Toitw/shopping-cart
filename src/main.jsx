@@ -8,6 +8,7 @@ import MainPage from "./Components/MainPage";
 import ProductPage from "./Components/ProductPage";
 import ErrorPage from "./Components/ErrorPage";
 import ShopPage from "./Components/ShopPage";
+import Checkout from "./Components/CheckoutPage";
 
 
 
@@ -24,10 +25,10 @@ const BrowserRouter = createBrowserRouter([
         },
       ],
     },
-    // {
-    //   path: "/shop",
-    //   component: Shop,
-    // },
+    {
+      path: "/checkout",
+      element: <Checkout />,
+    },
   ]);
   
 
