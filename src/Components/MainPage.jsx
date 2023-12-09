@@ -1,13 +1,13 @@
 import React from 'react';
 import Nav from './Nav';
+import { Outlet } from "react-router-dom";
 
 
 const MainPage = () => {
   return (
     <>
       <Nav />
-      <h1>Welcome to the Home Page</h1>
-      {/* Add more content here as needed */}
+      <Outlet />
     </>
   );
 };
