@@ -1,5 +1,6 @@
 import { getProducts } from '../Api/storeItems';
 import { useEffect, useState } from 'react';
+import styles from './ShopPage.module.css';
 
 const ShopPage = () => {
 
@@ -31,9 +32,9 @@ const ShopPage = () => {
     }
 
     return (
-        <div className="product-grid">
+        <div className={styles.productGrid}>
             {products.map((product) => (
-                <div className="product-card" key={product.id}>
+                <div className={styles.productCard} key={product.id}>
                     <img src={product.image} alt={product.title} />
                     <h3>{product.title}</h3>
                     <p>{product.description}</p>
