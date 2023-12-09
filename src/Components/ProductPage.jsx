@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
+import styles from './ProductPage.module.css';
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -31,10 +32,24 @@ const ProductPage = () => {
 
   return (
     <div>
-      <h1>{product.title}</h1>
-      <img src={product.image} alt={product.title} />
-      <p>{product.description}</p>
-      <p>{product.price}€</p>
+      <div className={styles.container}>
+        <div className={styles.imageContainer}>
+          <img src={product.image} alt={product.title} />
+        </div>
+        <div className="rightContainer"> {/* Added div with class name "rightContainer" */}
+          <div className={styles.infoContainer}>
+            <h1>{product.title}</h1>
+            <p>{product.description}</p>
+            <p>{product.price}€</p>
+          </div>
+          <div className={styles.productQuantity}>
+            <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} min="1" max="100" aria-label="Quantity" />   
+          </div>
+          <div className={styles.buttonContainer}>
+            <button>Add to cart</button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

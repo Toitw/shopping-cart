@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+    
+.infoContainer {
+    padding: 20px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.infoContainer h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.infoContainer p {
+    margin-bottom: 10px;
+}
+
+.productQuantity {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.buttonContainer button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #008CBA;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buttonContainer button:hover {
+    background-color: #007B9A;
+}
