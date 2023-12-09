@@ -20,7 +20,7 @@ const BrowserRouter = createBrowserRouter([
       children: [
         {index: true, element: <ShopPage />},
         {
-          path: "/product",
+          path: "/product/:id",
           element: <ProductPage />  ,
         },
       ],

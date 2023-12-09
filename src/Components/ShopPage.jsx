@@ -1,6 +1,7 @@
 import { getProducts } from '../Api/storeItems';
 import { useEffect, useState } from 'react';
 import styles from './ShopPage.module.css';
+import { Link } from 'react-router-dom';
 
 const ShopPage = () => {
 
@@ -34,15 +35,20 @@ const ShopPage = () => {
     return (
         <div className={styles.productGrid}>
             {products.map((product) => (
-                <div className={styles.productCard} key={product.id}>
-                    <img src={product.image} alt={product.title} />
-                    <h3>{product.title}</h3>
-                    <div className={styles.productDetails}>
-                        <p>{product.description.substring(0, 100)}...</p>
-                        <p>{product.price}€</p>
+                <Link to={`/product/${product.id}`} className={styles.productCard} key={product.id}>
+                    <div>
+                        <img src={product.image} alt={product.title} />
+                        <h3>{product.title}</h3>
+                        <div className={styles.productDetails}>
+                            <p>{product.description.substring(0, 100)}...</p>
+                            <p>{product.price}€</p>
+                            <div className={styles.productQuantity}>
+                                <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} min="1" max="100" aria-label="Quantity" />   
+                            </div>
+                        </div>
                         <button>Add to Cart</button>
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
     );
