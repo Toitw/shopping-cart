@@ -1,29 +1,32 @@
 import Nav from './Nav';
 import { Outlet } from "react-router-dom";
-import { useContext } from 'react';
+import { useState } from 'react';
 import { CartContext } from './CartContext';
 
 const MainPage = () => {
 
-  const {cartItems, setCartItems} = useContext(CartContext);
+  const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity) => {
     const productInCart = cartItems.find((item) => item.id === product.id);
-      if (productInCart) {
-          setCartItems(
-              cartItems.map((item) =>
-                  item.id === product.id
-                      ? { ...productInCart, qty: productInCart.qty + 1 }
-                      : item
-              )
-          );
-      } else {
-          setCartItems([...cartItems, { ...product, qty: 1 }]);
-      }
+    const numQuantity = Number(quantity);
+  
+    if (productInCart) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...productInCart, qty: productInCart.qty + numQuantity }
+            : item
+        )
+      );
+      console.log(cartItems);
+    } else {
+      setCartItems([...cartItems, { ...product, qty: numQuantity }]);
+    }
   };
 
   return (
-      <CartContext.Provider value={{cartItems, addToCart}}>
+      <CartContext.Provider value={{cartItems, setCartItems, addToCart}}>
         <Nav />
         <Outlet />
       </CartContext.Provider>

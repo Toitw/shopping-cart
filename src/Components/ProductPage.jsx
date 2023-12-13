@@ -10,7 +10,12 @@ const ProductPage = () => {
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [quantity, setQuantity] = useState(1);
   const {addToCart} = useContext(CartContext);
+
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -46,10 +51,10 @@ const ProductPage = () => {
             <p>{product.price}€</p>
           </div>
           <div className={styles.productQuantity}>
-            <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} min="1" max="100" aria-label="Quantity" />   
+            <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} value={quantity} onChange={handleQuantityChange} min="1" max="100" aria-label="Quantity" />   
           </div>
           <div className={styles.buttonContainer}>
-          <button type="button" onClick={() => addToCart(product)}>Add to cart</button>
+          <button type="button" onClick={() => addToCart(product, quantity)}>Add to cart</button>
           </div>
         </div>
       </div>
