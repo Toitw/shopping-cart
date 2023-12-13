@@ -46,11 +46,7 @@ const ShopPage = () => {
                         <div className={styles.productDetails}>
                             <p>{product.description.substring(0, 100)}...</p>
                             <p>{product.price}€</p>
-                            <div className={styles.productQuantity}>
-                                <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} min="1" max="100" aria-label="Quantity" />   
-                            </div>
                         </div>
-                        <button type="button" onClick={() => addToCart(product)}>Add to Cart</button>
                     </div>
                 </Link>
             ))}
