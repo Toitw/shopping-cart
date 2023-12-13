@@ -11,6 +11,8 @@ const CheckoutPage = () => {
         <div key={item.id}>
           <h3>{item.title}</h3>
           <p>{item.price}€</p>
+          <p>Quantity: {item.qty}</p>
+          {/* <img src={item.image} alt={item.title} /> */}
         </div>
       ))}
     </div>

@@ -23,11 +23,11 @@ const BrowserRouter = createBrowserRouter([
           path: "/product/:id",
           element: <ProductPage />  ,
         },
+        {
+          path: "/checkout",
+          element: <Checkout />,
+        },
       ],
-    },
-    {
-      path: "/checkout",
-      element: <Checkout />,
     },
   ]);
   
