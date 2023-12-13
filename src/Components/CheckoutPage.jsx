@@ -30,13 +30,20 @@ const CheckoutPage = () => {
           </div>
         ))
       )}
+
+      {showModal && (
+        <div className={styles.modal}>
+          Your order is on the way!
+          <CustomButton onClick={() => setShowModal(false)} name="Close" className={styles.modal}></CustomButton>
+        </div>
+      )}
   
       {cartItems.length > 0 && (
         <div>
           <div className={styles.total}>
             Total: {cartItems.reduce((total, item) => total + item.price * item.qty, 0)}€
           </div>
-          <CustomButton onClick={handleCheckout} name="Checkout" className={styles.checkoutButton}></CustomButton>
+          <CustomButton onClick={handleCheckout} name="Checkout" className={styles.customButton}></CustomButton>
         </div>
       )}
     </div>
