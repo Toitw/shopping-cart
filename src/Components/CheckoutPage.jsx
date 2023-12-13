@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import { useState } from "react";
+import CustomButton from "./CustomButton";
 
 const CheckoutPage = () => {
   const {cartItems, setCartItems} = useContext(CartContext);
@@ -29,18 +30,16 @@ const CheckoutPage = () => {
         ))
       )}
   
-      {cartItems.length > 0 && (
-        <button onClick={handleCheckout}>Checkout</button>
-      )}
+      {cartItems.length > 0 && <CustomButton onClick={handleCheckout} name="Checkout" />}
   
-      {showModal && (
-        <div>
-          Your order is on the way!
-          <button onClick={() => setShowModal(false)}>Close</button>
-        </div>
-      )}
-    </div>
-  );
-};
+            {showModal && (
+              <div>
+                Your order is on the way!
+                <CustomButton onClick={() => setShowModal(false)} name="Close" />
+              </div>
+            )}
+          </div>
+        );
+      };
 
 export default CheckoutPage;
