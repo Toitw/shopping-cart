@@ -2,12 +2,16 @@ import { getProducts } from '../Api/storeItems';
 import { useEffect, useState } from 'react';
 import styles from './ShopPage.module.css';
 import { Link } from 'react-router-dom';
+import { CartContext } from './CartContext';
+import { useContext } from 'react';
+
 
 const ShopPage = () => {
 
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const {addToCart} = useContext(CartContext);
 
     useEffect(() => {
         getProducts()
@@ -46,7 +50,7 @@ const ShopPage = () => {
                                 <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} min="1" max="100" aria-label="Quantity" />   
                             </div>
                         </div>
-                        <button>Add to Cart</button>
+                        <button type="button" onClick={() => addToCart(product)}>Add to Cart</button>
                     </div>
                 </Link>
             ))}

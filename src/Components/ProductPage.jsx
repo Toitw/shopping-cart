@@ -2,12 +2,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import styles from './ProductPage.module.css';
+import { CartContext } from './CartContext';
+import { useContext } from 'react';
 
 const ProductPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const {addToCart} = useContext(CartContext);
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products/${id}`)
@@ -46,7 +49,7 @@ const ProductPage = () => {
             <input type="number" id={`quantity-${product.id}`} name={`quantity-${product.id}`} min="1" max="100" aria-label="Quantity" />   
           </div>
           <div className={styles.buttonContainer}>
-            <button>Add to cart</button>
+          <button type="button" onClick={() => addToCart(product)}>Add to cart</button>
           </div>
         </div>
       </div>
